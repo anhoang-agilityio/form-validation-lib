@@ -1,4 +1,4 @@
-import { ConstraintValidateFuncParam } from '../types';
+import { FieldValidationParam } from '../types';
 import { updateFormError } from './updateFormError';
 import { INPUT_VALIDATION_RULES } from '../constants';
 import { isMatchPattern } from '../utils';
@@ -8,9 +8,9 @@ export const validatePhone = ({
   element,
   rule,
   formError,
-}: ConstraintValidateFuncParam): void => {
+}: FieldValidationParam): void => {
   if (!rule.valueAsPhone) return;
-  if (isMatchPattern(element.value.trim(), DEFAULT_PHONE_PATTERN))
+  if (!isMatchPattern(element.value.trim(), DEFAULT_PHONE_PATTERN))
     updateFormError({
       formError: formError,
       fieldName: element.name,

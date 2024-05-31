@@ -31,7 +31,7 @@ export type FormError = Partial<Record<string, Record<string, string>>>;
 
 export type ValidateFunc = () => Promise<FormError>;
 
-export type ConstraintValidateFuncParam = {
+export type FieldValidationParam = {
   element: TextFieldElement;
   rule: ValidationRules;
   formError: FormError;

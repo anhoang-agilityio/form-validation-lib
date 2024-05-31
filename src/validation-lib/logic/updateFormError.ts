@@ -12,7 +12,10 @@ type paramType = {
   fieldName: string;
   constraint: string;
   rule:
-    | Exclude<ValidationRules[keyof ValidationRules], CustomValidationRules>
+    | Exclude<
+        ValidationRules[keyof ValidationRules],
+        CustomValidationRules | undefined
+      >
     | CustomValidationValue;
 };
 

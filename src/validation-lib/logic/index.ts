@@ -9,8 +9,10 @@ import { validateMail } from './validateMail';
 import { validatePhone } from './validatePhone';
 import { validatePattern } from './validatePattern';
 import { validateCustomRules } from './validateCustomRules';
+import { INPUT_VALIDATION_RULES } from '../constants';
+import { FieldValidationParam, InputValidationRules } from '../types';
 
-export default {
+const _dictionary = {
   required: validateRequired,
   minLength: validateMinLength,
   maxLength: validateMaxLength,
@@ -22,4 +24,14 @@ export default {
   valueAsPhone: validatePhone,
   pattern: validatePattern,
   customRules: validateCustomRules,
+};
+
+export const validateField = async (param: FieldValidationParam) => {
+  for (const constraint of Object.keys(param.rule)) {
+    if (constraint === INPUT_VALIDATION_RULES.customRules) {
+      await validateCustomRules(param);
+    } else {
+      _dictionary[constraint as keyof InputValidationRules](param);
+    }
+  }
 };

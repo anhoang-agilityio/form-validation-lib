@@ -2,7 +2,7 @@ import { isMatchPattern } from './isMatchPattern';
 
 export const isValidDate = (value: string) => {
   // suppose the valid date format is DD/MM/YYYY
-  const datePattern = /^\d{2}\/\d{2}\/\d{4}$/;
+  const datePattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
   if (!isMatchPattern(value, datePattern)) {
     return false;
   }
