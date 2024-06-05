@@ -1,1 +1,5 @@
-export type TextFieldElement = HTMLInputElement | HTMLTextAreaElement;
+export type FieldElement =
+  | HTMLInputElement
+  | HTMLSelectElement
+  | HTMLTextAreaElement
+  | RadioNodeList;

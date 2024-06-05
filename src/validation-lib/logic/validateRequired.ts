@@ -12,7 +12,10 @@ export const validateRequired = ({
   if (isEmptyString(element.value.trim()))
     updateFormError({
       formError: formError,
-      fieldName: element.name,
+      fieldName:
+        element instanceof RadioNodeList
+          ? (element[0] as HTMLInputElement).name
+          : element.name,
       constraint: INPUT_VALIDATION_RULES.required,
       rule: rule.required,
     });

@@ -1,5 +1,5 @@
 import { INPUT_VALIDATION_RULES } from '../constants';
-import { TextFieldElement } from './form';
+import { FieldElement } from './form';
 
 export type InputValidationRules = typeof INPUT_VALIDATION_RULES;
 
@@ -32,7 +32,7 @@ export type FormError = Partial<Record<string, Record<string, string>>>;
 export type ValidateFunc = () => Promise<FormError>;
 
 export type FieldValidationParam = {
-  element: TextFieldElement;
+  element: FieldElement;
   rule: ValidationRules;
   formError: FormError;
 };

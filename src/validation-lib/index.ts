@@ -1,6 +1,6 @@
 import {
   FormError,
-  TextFieldElement,
+  FieldElement,
   ValidateFunc,
   ValidationRules,
 } from './types';
@@ -14,9 +14,10 @@ export const register = (
     const formError: FormError = {};
     const elements = form.elements;
     for (const [fieldName, validationRule] of Object.entries(config)) {
-      const element = elements.namedItem(fieldName) as TextFieldElement;
+      const element = elements.namedItem(fieldName);
+      if (element === null) continue;
       await validateField({
-        element: element,
+        element: element as FieldElement,
         rule: validationRule,
         formError: formError,
       });
