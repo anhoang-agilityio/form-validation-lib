@@ -1,5 +1,8 @@
 export type FieldElement =
   | HTMLInputElement
   | HTMLSelectElement
-  | HTMLTextAreaElement
-  | RadioNodeList;
+  | HTMLTextAreaElement;
+
+export type FieldList = RadioNodeList;
+
+export type FieldGroup = FieldElement | FieldList;

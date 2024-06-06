@@ -1,5 +1,5 @@
 import { INPUT_VALIDATION_RULES } from '../constants';
-import { FieldElement } from './form';
+import { FieldGroup } from './form';
 
 export type InputValidationRules = typeof INPUT_VALIDATION_RULES;
 
@@ -8,7 +8,7 @@ type ValidationMessage = {
 };
 
 export type CustomValidationValue = {
-  validationFunc: () => boolean | Promise<boolean>; // return true if valid, otherwise false
+  validationFunc: (value: string) => boolean | Promise<boolean>; // return true if valid, otherwise false
 } & ValidationMessage;
 
 export type CustomValidationRules = Record<string, CustomValidationValue>;
@@ -32,7 +32,7 @@ export type FormError = Partial<Record<string, Record<string, string>>>;
 export type ValidateFunc = () => Promise<FormError>;
 
 export type FieldValidationParam = {
-  element: FieldElement;
+  element: FieldGroup;
   rule: ValidationRules;
   formError: FormError;
 };
