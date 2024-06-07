@@ -1,9 +1,9 @@
 import { DEFAULT_ERROR_MESSAGE } from '../constants';
 import {
   FormError,
-  ValidationRules,
-  InputValidationRules,
-  CustomValidationRules,
+  ValidationRule,
+  ValidationRule,
+  CustomValidationRule,
   CustomValidationValue,
 } from '../types';
 
@@ -13,8 +13,8 @@ type paramType = {
   constraint: string;
   rule:
     | Exclude<
-        ValidationRules[keyof ValidationRules],
-        CustomValidationRules | undefined
+        ValidationRule[keyof ValidationRule],
+        CustomValidationRule | undefined
       >
     | CustomValidationValue;
 };
@@ -31,7 +31,7 @@ export const updateFormError = ({
       typeof rule === 'object' && rule.message
         ? rule.message
         : DEFAULT_ERROR_MESSAGE[
-            constraint as Exclude<keyof InputValidationRules, 'customRules'>
+            constraint as Exclude<keyof ValidationRule, 'customRules'>
           ],
   };
 };

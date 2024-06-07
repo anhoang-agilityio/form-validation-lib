@@ -8,6 +8,6 @@ export const isCheckBoxOrRadio = (
       field[0] instanceof HTMLInputElement &&
       (field[0].type === 'checkbox' || field[0].type === 'radio')) ||
     (!(field instanceof RadioNodeList) &&
-      (field.type === 'checkbox' || field.type === 'radio'))
+      (field.type === 'checkbox' || field.type === 'checkbox'))
   );
 };

@@ -20,22 +20,7 @@
       class="container mx-auto d-flex gap-3 flex-column"
       id="form"
     >
-      <div>
-        <label for="email" class="form-label">Email</label>
-        <input type="text" id="email" name="email" class="form-control" />
-        <div class="invalid-feedback"></div>
-      </div>
-      <div>
-        <label for="password" class="form-label">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          class="form-control"
-        />
-        <div class="invalid-feedback">Example invalid feedback text</div>
-      </div>
-      <div>
+      <div data-form-group>
         <label for="firstname" class="form-label">First name</label>
         <input
           type="text"
@@ -43,30 +28,48 @@
           name="firstname"
           class="form-control"
         />
-        <div class="invalid-feedback"></div>
+        <div data-form-error></div>
       </div>
-      <div>
+
+      <div data-form-group>
         <label for="lastname" class="form-label">Last name</label>
         <input type="text" id="lastname" name="lastname" class="form-control" />
-        <div class="invalid-feedback"></div>
+        <div data-form-error>Example invalid feedback text</div>
       </div>
-      <div>
-        <label for="birthday" class="form-label">Day of birth</label>
-        <input type="text" id="birthday" name="birthday" class="form-control" />
-        <div class="invalid-feedback"></div>
-      </div>
-      <div>
-        <label for="github-id" class="form-label">Github ID</label>
-        <input
-          type="text"
-          id="github-id"
-          name="github-id"
-          class="form-control"
-        />
-        <div class="invalid-feedback"></div>
-      </div>
+      <!--      <div>-->
+      <!--        <label for="firstname" class="form-label">First name</label>-->
+      <!--        <input-->
+      <!--          type="text"-->
+      <!--          id="firstname"-->
+      <!--          name="firstname"-->
+      <!--          class="form-control"-->
+      <!--        />-->
+      <!--        <div class="invalid-feedback"></div>-->
+      <!--      </div>-->
+      <!--      <div>-->
+      <!--        <label for="lastname" class="form-label">Last name</label>-->
+      <!--        <input type="text" id="lastname" name="lastname" class="form-control" />-->
+      <!--        <div class="invalid-feedback"></div>-->
+      <!--      </div>-->
+      <!--      <div>-->
+      <!--        <label for="birthday" class="form-label">Day of birth</label>-->
+      <!--        <input type="text" id="birthday" name="birthday" class="form-control" />-->
+      <!--        <div class="invalid-feedback"></div>-->
+      <!--      </div>-->
+      <!--      <div>-->
+      <!--        <label for="github-id" class="form-label">Github ID</label>-->
+      <!--        <input-->
+      <!--          type="text"-->
+      <!--          id="github-id"-->
+      <!--          name="github-id"-->
+      <!--          class="form-control"-->
+      <!--        />-->
+      <!--        <div class="invalid-feedback"></div>-->
+      <!--      </div>-->
       <div class="d-flex justify-content-evenly">
-        <button id="submit-btn" class="btn btn-success w-25">Submit</button>
+        <button id="submit-btn" type="submit" class="btn btn-success w-25">
+          Submit
+        </button>
         <button id="reset-btn" type="button" class="btn btn-primary w-25">
           Reset
         </button>

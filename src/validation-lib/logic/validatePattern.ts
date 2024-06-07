@@ -1,28 +1,20 @@
-import { FieldValidationParam } from '../types';
-import { updateFormError } from './updateFormError';
-import { INPUT_VALIDATION_RULES } from '../constants';
-import { isMatchPattern } from '../utils';
-import { isCheckBoxOrRadio } from '../utils/isCheckBoxOrRadio.ts';
-import { isSelectionBox } from '../utils/isSelectionBox.ts';
-import { isFileInput } from '../utils/isFileInput.ts';
+import { Pattern, TextField } from '../types';
+import { DEFAULT_EMAIL_PATTERN, DEFAULT_PHONE_PATTERN } from '../constants';
+import { validateNumber } from './validateNumber.ts';
+import { validateDate } from './validateDate.ts';
+import { validateRegExp } from './validateRegExp.ts';
 
-export const validatePattern = ({
-  element,
-  rule,
-  formError,
-}: FieldValidationParam): void => {
-  if (
-    !rule.pattern ||
-    isCheckBoxOrRadio(element) ||
-    isSelectionBox(element) ||
-    isFileInput(element)
-  )
-    return;
-  if (!isMatchPattern(element.value.trim(), rule.pattern.value))
-    updateFormError({
-      formError: formError,
-      fieldName: element.name,
-      constraint: INPUT_VALIDATION_RULES.pattern,
-      rule: rule.pattern,
-    });
+export const validatePattern = (element: TextField, pattern: Pattern) => {
+  switch (pattern) {
+    case 'number':
+      return validateNumber(element);
+    case 'date':
+      return validateDate(element);
+    case 'email':
+      return validateRegExp(element, DEFAULT_EMAIL_PATTERN);
+    case 'phone':
+      return validateRegExp(element, DEFAULT_PHONE_PATTERN);
+    default:
+      return validateRegExp(element, pattern);
+  }
 };

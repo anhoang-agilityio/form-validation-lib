@@ -1,38 +1,58 @@
-import { INPUT_VALIDATION_RULES } from '../constants';
+import { DEFAULT_ERROR_MESSAGE, INPUT_VALIDATION_RULE } from '../constants';
 import { FieldGroup } from './form';
 
-export type InputValidationRules = typeof INPUT_VALIDATION_RULES;
+export type InputValidationRule = typeof INPUT_VALIDATION_RULE;
 
-type ValidationMessage = {
+export type DefaultErrorMessage = typeof DEFAULT_ERROR_MESSAGE;
+
+export type Message = string;
+
+export type Pattern = 'email' | 'number' | 'date' | 'phone' | RegExp;
+
+export type ValidationFunc = (value: string) => boolean | Promise<boolean>; // return true if valid, otherwise false
+
+type ValidationValue = boolean | string | number | Pattern | ValidationFunc;
+
+export type ValidationValueMessage<
+  TValidationValue extends ValidationValue = ValidationValue,
+> = {
+  value: TValidationValue;
   message: string;
 };
 
-export type CustomValidationValue = {
-  validationFunc: (value: string) => boolean | Promise<boolean>; // return true if valid, otherwise false
-} & ValidationMessage;
-
-export type CustomValidationRules = Record<string, CustomValidationValue>;
-
-export type ValidationRules = Partial<{
-  required: true | ValidationMessage;
-  minLength: { value: number } & Partial<ValidationMessage>;
-  maxLength: { value: number } & Partial<ValidationMessage>;
-  valueAsNumber: true | ValidationMessage;
-  min: { value: number } & Partial<ValidationMessage>;
-  max: { value: number } & Partial<ValidationMessage>;
-  valueAsDate: true | ValidationMessage;
-  valueAsMail: true | ValidationMessage;
-  valueAsPhone: true | ValidationMessage;
-  pattern: { value: RegExp } & Partial<ValidationMessage>;
-  customRules: CustomValidationRules;
+export type ValidationRule = Partial<{
+  required: boolean | string | ValidationValueMessage<boolean>;
+  minLength: number | ValidationValueMessage<number>;
+  maxLength: number | ValidationValueMessage<number>;
+  pattern: Pattern | ValidationValueMessage<Pattern>;
+  minValue: number | ValidationValueMessage<number>;
+  maxValue: number | ValidationValueMessage<number>;
+  customRule: ValidationValueMessage<ValidationFunc>;
 }>;
 
-export type FormError = Partial<Record<string, Record<string, string>>>;
+export type SyncValidationRule = Partial<{
+  required: ValidationValueMessage<boolean>;
+  minLength: ValidationValueMessage<number>;
+  maxLength: ValidationValueMessage<number>;
+  pattern: ValidationValueMessage<Pattern>;
+  minValue: ValidationValueMessage<number>;
+  maxValue: ValidationValueMessage<number>;
+  customRule: ValidationValueMessage<ValidationFunc>;
+}>;
 
-export type ValidateFunc = () => Promise<FormError>;
+export type ValidationConfig = Record<string, ValidationRule>;
+
+export type SyncValidationConfig = Record<string, SyncValidationRule>;
+
+export type FieldError = {
+  type: string;
+  message: string;
+};
+
+export type FormError = Partial<Record<string, FieldError>>;
 
 export type FieldValidationParam = {
   element: FieldGroup;
-  rule: ValidationRules;
+  rule: SyncValidationRule;
   formError: FormError;
 };

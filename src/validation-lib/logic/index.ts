@@ -1,37 +1,29 @@
 import { validateRequired } from './validateRequired';
 import { validateMinLength } from './validateMinLength';
 import { validateMaxLength } from './validateMaxLength';
-import { validateNumberType } from './validateNumberType';
 import { validateMinValue } from './validateMinValue';
 import { validateMaxValue } from './validateMaxValue';
-import { validateDate } from './validateDate';
-import { validateMail } from './validateMail';
-import { validatePhone } from './validatePhone';
 import { validatePattern } from './validatePattern';
-import { validateCustomRules } from './validateCustomRules';
-import { INPUT_VALIDATION_RULES } from '../constants';
-import { FieldValidationParam, InputValidationRules } from '../types';
+import { validateCustomRule } from './validateCustomRule.ts';
+import { INPUT_VALIDATION_RULE } from '../constants';
+import { FieldValidationParam, ValidationRule } from '../types';
 
 const _dictionary = {
   required: validateRequired,
   minLength: validateMinLength,
   maxLength: validateMaxLength,
-  valueAsNumber: validateNumberType,
-  min: validateMinValue,
-  max: validateMaxValue,
-  valueAsDate: validateDate,
-  valueAsMail: validateMail,
-  valueAsPhone: validatePhone,
   pattern: validatePattern,
-  customRules: validateCustomRules,
+  minValue: validateMinValue,
+  maxValue: validateMaxValue,
+  customRule: validateCustomRule,
 };
 
 export const validateField = async (param: FieldValidationParam) => {
   for (const constraint of Object.keys(param.rule)) {
-    if (constraint === INPUT_VALIDATION_RULES.customRules) {
-      await validateCustomRules(param);
+    if (constraint === INPUT_VALIDATION_RULE.customRule) {
+      await validateCustomRule(param);
     } else {
-      _dictionary[constraint as keyof InputValidationRules](param);
+      _dictionary[constraint as keyof ValidationRule](param);
     }
   }
 };
