@@ -1,4 +1,4 @@
-import { isMatchPattern } from './isMatchPattern';
+import { isMatchPattern } from './is-match-pattern.ts';
 
 export const isValidDate = (value: string) => {
   // suppose the valid date format is YYYY-MM-DD

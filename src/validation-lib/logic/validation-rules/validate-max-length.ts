@@ -1,5 +1,5 @@
-import { TextField } from '../types';
-import { isStringLengthAboveValue } from '../utils';
+import { TextField } from '../../types';
+import { isStringLengthAboveValue } from '../../utils';
 
 export const validateMaxLength = (
   element: TextField,

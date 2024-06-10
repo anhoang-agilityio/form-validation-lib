@@ -1,4 +1,4 @@
-import { isValidNumber } from './isValidNumber';
+import { isValidNumber } from './is-valid-number.ts';
 
 export const isNumberMoreThanValue = (
   _number: string,

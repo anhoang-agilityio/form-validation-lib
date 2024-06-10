@@ -1,4 +1,4 @@
-export const isCheckBoxRadioChecked = (
+export const isCheckboxRadioChecked = (
   field: HTMLInputElement | RadioNodeList,
 ) => {
   if (field instanceof RadioNodeList) {

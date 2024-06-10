@@ -1,6 +1,6 @@
 import { FieldGroup } from '../types';
 
-export const isCheckBoxOrRadio = (
+export const isCheckboxOrRadio = (
   field: FieldGroup,
 ): field is HTMLInputElement | RadioNodeList => {
   return (
@@ -8,6 +8,6 @@ export const isCheckBoxOrRadio = (
       field[0] instanceof HTMLInputElement &&
       (field[0].type === 'checkbox' || field[0].type === 'radio')) ||
     (!(field instanceof RadioNodeList) &&
-      (field.type === 'checkbox' || field.type === 'checkbox'))
+      (field.type === 'checkbox' || field.type === 'radio'))
   );
 };

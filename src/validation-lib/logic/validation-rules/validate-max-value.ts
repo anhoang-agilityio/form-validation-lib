@@ -1,5 +1,5 @@
-import { TextField } from '../types';
-import { isNumberMoreThanValue, isValidNumber } from '../utils';
+import { TextField } from '../../types';
+import { isNumberMoreThanValue, isValidNumber } from '../../utils';
 
 export const validateMaxValue = (element: TextField, maxValue: number) => {
   return (

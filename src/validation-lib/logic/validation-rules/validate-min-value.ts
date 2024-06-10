@@ -1,5 +1,5 @@
-import { TextField } from '../types';
-import { isNumberLessThanValue, isValidNumber } from '../utils';
+import { TextField } from '../../types';
+import { isNumberLessThanValue, isValidNumber } from '../../utils';
 
 export const validateMinValue = (element: TextField, minValue: number) => {
   return (

@@ -1,5 +1,4 @@
 import { DEFAULT_ERROR_MESSAGE, INPUT_VALIDATION_RULE } from '../constants';
-import { FieldGroup } from './form';
 
 export type InputValidationRule = typeof INPUT_VALIDATION_RULE;
 
@@ -50,9 +49,3 @@ export type FieldError = {
 };
 
 export type FormError = Partial<Record<string, FieldError>>;
-
-export type FieldValidationParam = {
-  element: FieldGroup;
-  rule: SyncValidationRule;
-  formError: FormError;
-};

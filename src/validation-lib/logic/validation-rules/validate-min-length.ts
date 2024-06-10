@@ -1,5 +1,5 @@
-import { TextField } from '../types';
-import { isStringLengthUnderValue } from '../utils';
+import { TextField } from '../../types';
+import { isStringLengthUnderValue } from '../../utils';
 
 export const validateMinLength = (
   element: TextField,

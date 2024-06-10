@@ -1,4 +1,4 @@
-import { TextField, ValidationFunc } from '../types';
+import { TextField, ValidationFunc } from '../../types';
 
 export const validateCustomRule = async (
   element: TextField,
