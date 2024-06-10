@@ -86,10 +86,10 @@ Open http://localhost:5173 to view it in the browser.
          - `email`: a built-in email pattern
          - `phone`: a built-in phone pattern - only accept digits, must be started by 0, and size in between 10 or 11 characters
      - `minValue`:
-       - Only take effect when pattern is `number`
+       - Only take effect when `pattern` is `number`
        - The trimmed field value must be at least a given value
      - `maxValue`:
-       - Only take effect when pattern is `number`
+       - Only take effect when `pattern` is `number`
        - The trimmed field value must be no greater than a given value
      - `customRule`:
        - Your custom validation function
@@ -115,4 +115,4 @@ Open http://localhost:5173 to view it in the browser.
    - When we focus an input, its validation state will be reset
    - Inputs passed validation will be added `is-valid` class to its `data-form-group` container, otherwise the `is-invalid` class will be added
    - Error messages will be added to error message containers when validation fails, otherwise its text will be cleared
-   - You can use these classes to style for different form state
+   - You can use these classes to style for different form states
